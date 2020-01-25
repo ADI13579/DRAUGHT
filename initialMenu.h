@@ -1,4 +1,6 @@
 #include<SFML/Graphics.hpp>
+#include<SFML/Window.hpp>
+#include<Windows.h>
 #include<iostream>
 #include "board.h"
 #pragma once
@@ -11,6 +13,7 @@ class initMenu
 		//initializing text
 		sf::Text singleplayer, multiplayer, rules, exit;
 
+        float scale = GetSystemMetrics(SM_CXSCREEN) / 1920.0;
 
 	public:
 		void set(sf::RenderWindow  &window)
@@ -20,23 +23,23 @@ class initMenu
 
 			//loading fonts for text and setting size
 			singleplayer.setFont(gfont);
-			singleplayer.setCharacterSize(60);
+			singleplayer.setCharacterSize(scale * 60);
 
             multiplayer.setFont(gfont);
-            multiplayer.setCharacterSize(60);
+            multiplayer.setCharacterSize(scale * 60);
 
 
             rules.setFont(gfont);
-            rules.setCharacterSize(60);
+            rules.setCharacterSize(scale * 60);
 
             exit.setFont(gfont);
-            exit.setCharacterSize(60);
+            exit.setCharacterSize(scale * 60);
 
             //setting position for each text
-            singleplayer.move(50, 490);
-            multiplayer.move(50, 600);
-            rules.move(50, 710);
-            exit.move(50, 820);
+            singleplayer.move(scale * 50, scale * 490);
+            multiplayer.move(scale * 50, scale * 600);
+            rules.move(scale * 50, scale * 710);
+            exit.move(scale * 50, scale * 820);
 
 
             //setting Text to display text
@@ -62,7 +65,7 @@ class initMenu
         //hovering when first is selected
         void o1Disp(sf::RenderWindow& window)
         {
-            singleplayer.setOutlineThickness(20);
+            singleplayer.setOutlineThickness(scale * 20);
             multiplayer.setOutlineThickness(0);
             rules.setOutlineThickness(0);
             exit.setOutlineThickness(0);
@@ -78,7 +81,7 @@ class initMenu
         void o2Disp(sf::RenderWindow& window)
         {
             singleplayer.setOutlineThickness(0);
-            multiplayer.setOutlineThickness(20);
+            multiplayer.setOutlineThickness(scale * 20);
             rules.setOutlineThickness(0);
             exit.setOutlineThickness(0);
             //writing texts
@@ -94,7 +97,7 @@ class initMenu
         {
             singleplayer.setOutlineThickness(0);
             multiplayer.setOutlineThickness(0);
-            rules.setOutlineThickness(20);
+            rules.setOutlineThickness(scale * 20);
             exit.setOutlineThickness(0);
             //writing texts
             window.draw(singleplayer);
@@ -110,7 +113,7 @@ class initMenu
             singleplayer.setOutlineThickness(0);
             multiplayer.setOutlineThickness(0);
             rules.setOutlineThickness(0);
-            exit.setOutlineThickness(20);
+            exit.setOutlineThickness(scale * 20);
             //writing texts
             window.draw(singleplayer);
             window.draw(multiplayer);
@@ -137,22 +140,22 @@ class initMenu
         void clickCheck(int a,int b,sf::RenderWindow &window)
         {
 
-            if (a < 570 && b < 545 && b>508)
+            if (a < scale * 570 && b < scale * 545 && b>scale * 508)
             {
                 std::cout << "singleplayer was selected" << std::endl;
                 window.close();
             }
-            if (a < 536 && b < 658 && b>614)
+            if (a < scale * 536 && b < scale * 658 && b>scale * 614)
             {
                 std::cout << "multiplayer was selected" << std::endl;
                 window.close();
             }
-            if (a < 290 && b < 760 && b>727)
+            if (a < scale * 290 && b < scale * 760 && b>scale * 727)
             {
                 std::cout << "Rules was selected" << std::endl;
                 window.close();
             }
-            if (a < 210 && b < 888 && b>820)
+            if (a < scale * 210 && b < scale * 888 && b>scale * 820)
             {
                 std::cout << "Exit was selected" << std::endl;
                 window.close();
@@ -167,27 +170,27 @@ class initMenu
                 
                 int a = sf::Mouse::getPosition(window).x;
                 int b = sf::Mouse::getPosition(window).y;
-                if (a< 570 && b < 545 && b>508)
+                if (a< scale * 570 && b < scale * 545 && b>scale * 508)
                 {
 
                     window.clear();
                     setBoard(window);
                     o1Disp(window);
                 }
-                else if (a <536 && b < 658 && b>614)
+                else if (a < scale * 536 && b < scale * 658 && b>scale * 614)
                 {
                     window.clear();
                     setBoard(window);
                     o2Disp(window);
 
                 }
-                else if (a< 290 && b < 760 && b>723)
+                else if (a< scale * 290 && b < scale * 760 && b>scale * 723)
                 {
                     window.clear();
                     setBoard(window);
                     o3Disp(window);
                 }
-                else if(a < 210 && b < 888 && b>820)
+                else if(a < scale * 210 && b < scale * 888 && b>scale * 820)
                 {
                     window.clear();
                     setBoard(window);
