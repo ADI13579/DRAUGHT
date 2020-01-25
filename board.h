@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SFML/Window.hpp>
+#include<Windows.h>
 #include <SFML/Graphics.hpp>
 #pragma once
 
@@ -18,7 +19,8 @@ class board
 		
 		//defining sprite
 		sf::Sprite sp_board, sp_background;
-
+		
+		float scale = GetSystemMetrics(SM_CXSCREEN) / 1920.0;
 	public:
 		void textFormat()
 		{
@@ -27,9 +29,9 @@ class board
 
 
 			gamename.setFont(gfont);
-			gamename.setCharacterSize(300);
-			gamename.move(100, 100);
-			gamename.setOutlineThickness(40);
+			gamename.setCharacterSize(scale * 300);
+			gamename.move(scale * 100, scale * 100);
+			gamename.setOutlineThickness(scale * 40);
 			gamename.setString("Draught");
 
 		}
@@ -43,7 +45,7 @@ class board
 			//defining sprites
 			sp_board.setTexture(board);
 			sp_background.setTexture(background);
-			sp_board.move(800, 500);
+			sp_board.move(scale * 800, scale * 500);
 
 		}
 
