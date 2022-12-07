@@ -1,6 +1,5 @@
 #include <iostream>
 #include <SFML/Window.hpp>
-#include<Windows.h>
 #include <SFML/Graphics.hpp>
 #pragma once
 
@@ -20,7 +19,7 @@ class board
 		//defining sprite
 		sf::Sprite sp_board, sp_background;
 		
-		float scale = GetSystemMetrics(SM_CXSCREEN) / 1920.0;
+		float scale = 1024/ 1920.0;
 	public:
 		void textFormat()
 		{
